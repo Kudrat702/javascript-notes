@@ -1,0 +1,182 @@
+# Logic & Control Flow in JavaScript
+
+## **Definition of Logic**
+- **Definition**: Logic refers to the conditions or decisions that determine the flow of execution in a program, based on whether something is true or false.
+- **Example**:
+    ```javascript
+    let x = 10;
+    let y = 5;
+    
+    if (x > y) {
+        console.log("x is greater than y");  // This is based on the logical condition
+    }
+    ```
+
+### **Key Points about Logic**
+- **Logic** involves using **conditions** (like `if`, `else`, etc.) to make decisions in code.
+- It helps in **controlling the flow** of execution based on certain criteria.
+
+---
+
+## **Definition of Control Flow**
+- **Definition**: **Control flow** refers to the order in which individual statements, instructions, or function calls are executed in a program.
+- **Example**:
+    ```javascript
+    let age = 18;
+
+    if (age >= 18) {
+        console.log("You are an adult.");
+    } else {
+        console.log("You are a minor.");
+    }
+    ```
+
+### **Key Points about Control Flow**
+- **Control flow** uses conditional statements like **`if`**, **`else`**, **`switch`**, and **loops** like **`for`** and **`while`** to manage how the code is executed.
+- It is responsible for making decisions based on logic.
+
+---
+
+## **Types of Control Flow**
+
+1. **Conditional Statements**:
+   - **Definition**: These are used to make decisions based on logical conditions (true or false).
+   - **Example**:
+       ```javascript
+       let num = 10;
+
+       if (num > 5) {
+           console.log("Number is greater than 5");
+       } else {
+           console.log("Number is less than or equal to 5");
+       }
+       ```
+   - **Key Points**: `if`, `else if`, `else` help control the flow based on conditions.
+
+2. **Switch Statement**:
+   - **Definition**: A `switch` statement allows you to check multiple conditions and execute the corresponding block of code.
+   - **Example**:
+       ```javascript
+       let day = 3;
+       
+       switch(day) {
+           case 1: 
+               console.log("Monday");
+               break;
+           case 2:
+               console.log("Tuesday");
+               break;
+           case 3:
+               console.log("Wednesday");
+               break;
+           default:
+               console.log("Invalid day");
+       }
+       ```
+
+---
+
+## **Loops in Control Flow**
+1. **For Loop**:
+   - **Definition**: A `for` loop repeats a block of code a certain number of times.
+   - **Example**:
+       ```javascript
+       for (let i = 1; i <= 3; i++) {
+           console.log(i);  // Output: 1 2 3
+       }
+       ```
+
+2. **While Loop**:
+   - **Definition**: A `while` loop repeats a block of code as long as the condition is true.
+   - **Example**:
+       ```javascript
+       let count = 1;
+       while (count <= 3) {
+           console.log(count);  // Output: 1 2 3
+           count++;
+       }
+       ```
+
+---
+
+### **Summary**
+- **Logic**: Using conditions to make decisions (e.g., `if`, `else`).
+- **Control Flow**: The order in which code is executed, controlled by conditional statements and loops (e.g., `if`, `for`, `switch`).
+- Control flow allows you to direct the execution of your program based on certain conditions and repetitive tasks.
+
+# If-Else Statements and Do-While Loop in JavaScript
+
+## **1. If-Else Statement**
+
+### **Definition**:
+- **If-Else** is used to execute different blocks of code based on whether a condition is true or false.
+- **Example**:
+    ```javascript
+    let age = 20;
+
+    if (age >= 18) {  // If the condition is true
+        console.log("You are an adult.");
+    } else {  // If the condition is false
+        console.log("You are a minor.");
+    }
+    ```
+
+### **Key Points about If-Else**:
+- **`if`**: Checks if a condition is true.
+- **`else if`**: Checks another condition if the previous ones are false.
+- **`else`**: Executes code when all previous conditions are false.
+
+---
+
+## **2. If-Else if-Else Statement**
+
+### **Definition**:
+- **If-Else if-Else** is used when you have multiple conditions to check. It allows you to test more than one condition in sequence.
+- **Example**:
+    ```javascript
+    let score = 85;
+
+    if (score >= 90) {  // First condition
+        console.log("You got an A.");
+    } else if (score >= 70) {  // Second condition
+        console.log("You got a B.");
+    } else {  // If none of the above conditions are true
+        console.log("You got a C.");
+    }
+    ```
+
+### **Key Points**:
+- Use **`else if`** to test more than one condition in sequence.
+- **`else`** catches everything that doesn't match the previous conditions.
+
+---
+
+## **3. Do-While Loop**
+
+### **Definition**:
+- The **do-while loop** is used to execute a block of code **at least once** and then repeat it as long as the condition is true.
+- The condition is checked **after** the code block runs.
+- **Example**:
+    ```javascript
+    let i = 1;
+
+    do {
+        console.log(i);  // This will run at least once
+        i++;  // Increment i
+    } while (i <= 3);  // Continue looping while i is less than or equal to 3
+    ```
+
+### **Key Points about Do-While Loop**:
+- The **code block** is always executed **at least once**, even if the condition is false.
+- After the first execution, the **condition is checked**.
+
+---
+
+### **Summary**
+
+| Feature                       | **If-Else**                             | **Do-While Loop**                         |
+|-------------------------------|-----------------------------------------|-------------------------------------------|
+| **Usage**                      | Executes code based on conditions.      | Executes code at least once, then repeats based on a condition. |
+| **Condition Check**            | Condition is checked before execution.  | Condition is checked after the first execution. |
+| **Example**                    | `if(condition){ ... } else { ... }`    | `do { ... } while(condition);`            |
+| **Output**                     | One block is executed based on condition. | Code block is executed at least once.     |

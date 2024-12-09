@@ -1,0 +1,604 @@
+# JavaScript Variables
+
+Variables in JavaScript are used to store data values.
+
+## `var`
+- **Definition**: `var` is used to declare a variable that is function-scoped or globally scoped.
+- **Example**:
+    ```javascript
+    var name = "John";
+    console.log(name); // Output: John
+    ```
+
+## `let`
+- **Definition**: `let` is used to declare a block-scoped variable, meaning it is only accessible within the block it is defined.
+- **Example**:
+    ```javascript
+    let age = 25;
+    if (true) {
+        let age = 30;  // Block-scoped
+        console.log(age); // Output: 30
+    }
+    console.log(age); // Output: 25
+    ```
+
+## `const`
+- **Definition**: `const` is used to declare a block-scoped variable that cannot be reassigned after it is initialized.
+- **Example**:
+    ```javascript
+    const pi = 3.14;
+    console.log(pi); // Output: 3.14
+    // pi = 3.14159;  // Error: Assignment to constant variable.
+    ```
+
+## Differences Between `var`, `let`, and `const`
+
+| Feature             | `var`                             | `let`                             | `const`                         |
+|---------------------|-----------------------------------|-----------------------------------|---------------------------------|
+| **Scope**           | Function or global-scoped         | Block-scoped                     | Block-scoped                    |
+| **Re-declaration**  | Allowed in the same scope         | Not allowed in the same scope     | Not allowed in the same scope   |
+| **Re-assignment**   | Allowed                           | Allowed                           | Not allowed (constant value)    |
+| **Hoisting**        | Hoisted to the top with `undefined`| Hoisted but not initialized       | Hoisted but not initialized     |
+
+### Example showing all three:
+```javascript
+var x = 10; // Can be reassigned and redeclared
+let y = 20; // Can be reassigned, but not redeclared in the same scope
+const z = 30; // Cannot be reassigned or redeclared
+
+console.log(x, y, z); // Output: 10 20 30
+
+x = 50; // Reassigned
+y = 60; // Reassigned
+// z = 70; // Error: Assignment to constant variable.
+
+```
+
+
+
+# JavaScript Data Types
+**data type** defines the type of value a variable can hold, such as a number, string, or object.
+
+JavaScript has two types of data: **Primitive types** and **Reference types**.
+
+---
+
+## **1. Primitive Data Types**
+Primitive data types are the basic building blocks of data. They store only a single value.
+
+### **String**
+- **Definition**: Used to store text data, enclosed in single or double quotes.
+- **Example**:
+    ```javascript
+    let name = "John";
+    console.log(name); // Output: John
+    ```
+
+### **Number**
+- **Definition**: Used to store numeric values, including integers and decimals.
+- **Example**:
+    ```javascript
+    let age = 25;
+    console.log(age); // Output: 25
+    ```
+
+### **Boolean**
+- **Definition**: Represents logical values: `true` or `false`.
+- **Example**:
+    ```javascript
+    let isLoggedIn = true;
+    console.log(isLoggedIn); // Output: true
+    ```
+
+### **Undefined**
+- **Definition**: A variable is `undefined` when it is declared but not assigned a value.
+- **Example**:
+    ```javascript
+    let score;
+    console.log(score); // Output: undefined
+    ```
+
+### **Symbol**
+- **Definition**: A unique and immutable value often used as object keys.
+- **Example**:
+    ```javascript
+    let id = Symbol("id");
+    console.log(id); // Output: Symbol(id)
+    ```
+
+---
+
+## **2. Reference Data Types**
+Reference types store collections of data or more complex values.
+
+### **Object**
+- **Definition**: A collection of key-value pairs, where values can be any data type.
+- **Example**:
+    ```javascript
+    let person = { name: "John", age: 25 };
+    console.log(person.name); // Output: John
+    ```
+
+---
+
+## **3. Primitive vs Reference Types**
+
+| Feature                       | Primitive Types                           | Reference Types                   |
+|-------------------------------|-------------------------------------------|------------------------------------|
+| **Definition**                | Store single values.                     | Store collections of data.        |
+| **Examples**                  | String, Number, Boolean, Undefined, Symbol | Object, Array, Function.         |
+| **Stored In**                 | Stored directly in the memory.           | Stored as references (memory address). |
+| **Mutability**                | Immutable (cannot be changed).           | Mutable (can be modified).        |
+
+---
+
+### **Primitive Example**
+```javascript
+let a = 10;
+let b = a; // Copy of value
+b = 20;
+console.log(a); // Output: 10 (original is not affected) 
+```
+# Types Conversion: Convert String to Number
+**Type conversion** in JavaScript is the process of converting a value from one data type to another, such as converting a string to a number or a number to a string.
+
+In JavaScript, you can convert a **string** to a **number** using different methods.
+
+---
+
+## **Process of Converting String to Number**
+
+### **1. Using `Number()`**
+- **Definition**: The `Number()` function converts a string into a number.
+- **Example**:
+    ```javascript
+    let str = "123";
+    let num = Number(str);
+    console.log(num); // Output: 123
+    ```
+
+### **2. Using `parseInt()`**
+- **Definition**: The `parseInt()` function converts a string to an integer. It stops converting when it encounters a non-numeric character.
+- **Example**:
+    ```javascript
+    let str = "123abc";
+    let num = parseInt(str);
+    console.log(num); // Output: 123
+    ```
+
+### **3. Using `parseFloat()`**
+- **Definition**: The `parseFloat()` function converts a string to a floating-point number.
+- **Example**:
+    ```javascript
+    let str = "123.45";
+    let num = parseFloat(str);
+    console.log(num); // Output: 123.45
+    ```
+
+### **4. Using Unary Plus (`+`)**
+- **Definition**: The `+` unary operator can be used to convert a string to a number.
+- **Example**:
+    ```javascript
+    let str = "456";
+    let num = +str;
+    console.log(num); // Output: 456
+    ```
+
+---
+
+## **Differences Between Methods**
+
+| Method           | Description                                     | Example               |
+|------------------|-------------------------------------------------|-----------------------|
+| `Number()`       | Converts the entire string, returns `NaN` if not a valid number | `Number("123")` → `123` |
+| `parseInt()`     | Converts a string to an integer, stops at the first non-numeric character | `parseInt("123abc")` → `123` |
+| `parseFloat()`   | Converts a string to a floating-point number, stops at the first non-numeric character | `parseFloat("123.45abc")` → `123.45` |
+| Unary Plus (`+`) | A shorthand method to convert to number, works similarly to `Number()` | `+"123"` → `123` |
+
+---
+
+## **Key Notes**
+- **`Number()`** will attempt to convert the entire string. If it's not a valid number, it will return `NaN` (Not-a-Number).
+- **`parseInt()`** and **`parseFloat()`** can parse a string partially if it contains extra non-numeric characters.
+- **Unary `+`** is a concise way to convert a string into a number, similar to `Number()`.
+
+---
+
+### **Example of `Number()` with Invalid String**
+```javascript
+let str = "abc";
+let num = Number(str);
+console.log(num); // Output: NaN
+```
+
+# Operators in JavaScript
+
+Operators are symbols used to perform operations on variables and values.
+
+---
+
+## **1. Arithmetic Operators**
+- **Definition**: Used to perform mathematical operations like addition, subtraction, multiplication, and division.
+- **Example**:
+    ```javascript
+    let a = 10;
+    let b = 5;
+
+    console.log(a + b); // Output: 15 (Addition)
+    console.log(a - b); // Output: 5 (Subtraction)
+    console.log(a * b); // Output: 50 (Multiplication)
+    console.log(a / b); // Output: 2 (Division)
+    console.log(a % b); // Output: 0 (Modulus)
+    console.log(a ** b); // Output: 100000 (Exponentiation)
+    ```
+
+---
+
+## **2. Unary Operators**
+- **Definition**: Operate on a single operand (value or variable) to perform operations like negation or increment.
+- **Example**:
+    ```javascript
+    let x = 5;
+
+    console.log(-x); // Output: -5 (Unary negation)
+    console.log(++x); // Output: 6 (Increment)
+    console.log(--x); // Output: 5 (Decrement)
+    ```
+
+---
+
+## **3. Assignment Operators**
+- **Definition**: Used to assign values to variables, sometimes with additional operations.
+- **Example**:
+    ```javascript
+    let a = 10;
+    a += 5; // a = a + 5, Output: 15
+    a -= 3; // a = a - 3, Output: 12
+    a *= 2; // a = a * 2, Output: 24
+    a /= 4; // a = a / 4, Output: 6
+    a %= 2; // a = a % 2, Output: 0
+    ```
+
+---
+
+## **4. Comparison Operators**
+- **Definition**: Used to compare two values, returning `true` or `false` based on the condition.
+- **Example**:
+    ```javascript
+    let a = 10;
+    let b = 5;
+
+    console.log(a == b);  // Output: false (Equality)
+    console.log(a === b); // Output: false (Strict Equality)
+    console.log(a != b);  // Output: true (Inequality)
+    console.log(a !== b); // Output: true (Strict Inequality)
+    console.log(a > b);   // Output: true (Greater than)
+    console.log(a < b);   // Output: false (Less than)
+    console.log(a >= b);  // Output: true (Greater than or equal)
+    console.log(a <= b);  // Output: false (Less than or equal)
+    ```
+
+---
+
+## **Summary of Operators**
+
+| Operator Type       | Description                                           | Example                      |
+|---------------------|-------------------------------------------------------|------------------------------|
+| **Arithmetic**       | Performs mathematical operations.                    | `+`, `-`, `*`, `/`, `%`, `**` |
+| **Unary**            | Operates on a single operand.                         | `++`, `--`, `-`               |
+| **Assignment**       | Assigns a value to a variable.                        | `=`, `+=`, `-=`, `*=`, `/=`   |
+| **Comparison**       | Compares two values.                                  | `==`, `===`, `!=`, `!==`, `>`, `<` |
+
+---
+
+### **Summary**
+- **Arithmetic Operators**: Perform math operations.
+- **Unary Operators**: Perform operations on a single value (e.g., increment).
+- **Assignment Operators**: Assign values, sometimes with math.
+- **Comparison Operators**: Compare values and return `true` or `false`.
+
+# Concatenation vs Template Literals
+
+## **1. Concatenation Method**
+- **Definition**: This method combines (joins) two or more strings using the `+` symbol.
+- **Example**:
+    ```javascript
+    let firstName = "John";
+    let lastName = "Doe";
+    let fullName = firstName + " " + lastName;
+    console.log(fullName); // Output: John Doe
+    ```
+
+## **2. Template Literals**
+- **Definition**: Template literals let you join strings with variables easily by using backticks (`` ` ``) and `${}`.
+- **Example**:
+    ```javascript
+    let firstName = "John";
+    let lastName = "Doe";
+    let fullName = `${firstName} ${lastName}`;
+    console.log(fullName); // Output: John Doe
+    ```
+
+## **Differences Between Concatenation and Template Literals**
+
+| Feature            | **Concatenation**                        | **Template Literals**                |
+|--------------------|------------------------------------------|--------------------------------------|
+| **How it works**    | Uses `+` to join strings                | Uses backticks `` ` `` and `${}` to join |
+| **Readability**     | Can be hard to read with many variables  | Easier to read, especially with variables |
+| **Expressions**     | Can't easily include expressions         | Can include variables and expressions easily |
+| **Multi-line**      | Needs `+` for multi-line strings         | Can easily make multi-line strings   |
+
+---
+
+### **Summary**
+- **Concatenation**: Use `+` to join strings, but can get messy with many parts.
+- **Template Literals**: Easier and cleaner way to join strings, with support for expressions and multi-line.
+
+# Working with Strings in JavaScript
+
+## **1. `toUpperCase()`**
+- **Definition**: Converts all characters in a string to uppercase (capital letters).
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.toUpperCase()); // Output: HELLO
+    ```
+
+## **2. `toLowerCase()`**
+- **Definition**: Converts all characters in a string to lowercase (small letters).
+- **Example**:
+    ```javascript
+    let text = "HELLO";
+    console.log(text.toLowerCase()); // Output: hello
+    ```
+
+## **3. `charAt()`**
+- **Definition**: Returns the character at a specific position (index) in a string.
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.charAt(1)); // Output: e (character at index 1)
+    ```
+
+## **4. `indexOf()`**
+- **Definition**: Finds the position (index) of the first occurrence of a specified value in a string.
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.indexOf('e')); // Output: 1 (position of 'e')
+    ```
+
+## **5. `substring()`**
+- **Definition**: Extracts a part of the string between two specified indexes.
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.substring(1, 4)); // Output: ell (from index 1 to 4)
+    ```
+
+## **6. `slice()`**
+- **Definition**: Similar to `substring()`, but it can handle negative indexes to count from the end of the string.
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.slice(1, 4)); // Output: ell (from index 1 to 4)
+    console.log(text.slice(-3)); // Output: llo (last 3 characters)
+    ```
+
+## **7. `valueOf()`**
+- **Definition**: Returns the primitive value of a string (usually used internally).
+- **Example**:
+    ```javascript
+    let text = "hello";
+    console.log(text.valueOf()); // Output: hello (same as original string)
+    ```
+
+## **8. `split()`**
+- **Definition**: Splits a string into an array of substrings based on a specified separator.
+- **Example**:
+    ```javascript
+    let text = "apple,banana,orange";
+    console.log(text.split(',')); // Output: ["apple", "banana", "orange"]
+    ```
+
+---
+
+### **Summary of String Methods**
+
+| Method            | Description                                      | Example                             |
+|-------------------|--------------------------------------------------|-------------------------------------|
+| **`toUpperCase()`**| Converts string to uppercase                     | `"hello".toUpperCase()` → "HELLO"   |
+| **`toLowerCase()`**| Converts string to lowercase                     | `"HELLO".toLowerCase()` → "hello"   |
+| **`charAt()`**     | Returns the character at a given index           | `"hello".charAt(1)` → "e"           |
+| **`indexOf()`**    | Finds the index of the first occurrence of a value | `"hello".indexOf('e')` → 1          |
+| **`substring()`**  | Extracts a part of the string between two indexes | `"hello".substring(1, 4)` → "ell"   |
+| **`slice()`**      | Extracts part of the string, can use negative indexes | `"hello".slice(-3)` → "llo"        |
+| **`valueOf()`**    | Returns the primitive value of a string          | `"hello".valueOf()` → "hello"       |
+| **`split()`**      | Splits a string into an array using a separator   | `"apple,banana".split(',')` → `["apple", "banana"]` |
+
+---
+
+### **Key Points**
+- **`toUpperCase()`** and **`toLowerCase()`** change the case of the string.
+- **`charAt()`** gets the character at a certain position.
+- **`indexOf()`** finds where a character or word is located in the string.
+- **`substring()`** and **`slice()`** cut a part of the string, but **`slice()`** can handle negative values.
+- **`valueOf()`** gets the primitive value of the string.
+- **`split()`** breaks the string into an array of substrings based on a separator.
+
+# Working with Numbers in JavaScript
+
+## **1. `toFixed()`**
+- **Definition**: Formats a number to a specific number of decimal places.
+- **Example**:
+    ```javascript
+    let num = 12.3456;
+    console.log(num.toFixed(2)); // Output: 12.35 (rounded to 2 decimals)
+    ```
+
+## **2. `toPrecision()`**
+- **Definition**: Formats a number to a specific length (total number of digits).
+- **Example**:
+    ```javascript
+    let num = 12.3456;
+    console.log(num.toPrecision(4)); // Output: 12.35 (4 significant digits)
+    ```
+
+## **3. `toExponential()`**
+- **Definition**: Converts a number to exponential (scientific) notation.
+- **Example**:
+    ```javascript
+    let num = 123456;
+    console.log(num.toExponential(2)); // Output: 1.23e+5 (2 decimal places in exponential notation)
+    ```
+
+## **4. `toLocaleString()`**
+- **Definition**: Converts a number to a string based on the local language/region settings, often used for formatting.
+- **Example**:
+    ```javascript
+    let num = 1234567.89;
+    console.log(num.toLocaleString()); // Output: 1,234,567.89 (for US locale)
+    ```
+
+## **5. `valueOf()`**
+- **Definition**: Returns the primitive value of a number (usually used internally).
+- **Example**:
+    ```javascript
+    let num = 12;
+    console.log(num.valueOf()); // Output: 12 (same as original number)
+    ```
+
+## **6. `MAX_VALUE`**
+- **Definition**: Represents the largest possible number in JavaScript.
+- **Example**:
+    ```javascript
+    console.log(Number.MAX_VALUE); // Output: 1.7976931348623157e+308 (the largest number in JavaScript)
+    ```
+
+---
+
+### **Summary of Number Methods**
+
+| Method               | Description                                       | Example                              |
+|----------------------|---------------------------------------------------|--------------------------------------|
+| **`toFixed()`**       | Formats a number to a specific number of decimals | `12.3456.toFixed(2)` → `12.35`       |
+| **`toPrecision()`**   | Formats a number to a specific number of digits   | `12.3456.toPrecision(4)` → `12.35`   |
+| **`toExponential()`** | Converts a number to exponential (scientific) form | `123456.toExponential(2)` → `1.23e+5`|
+| **`toLocaleString()`**| Converts a number to a string in local format     | `1234567.89.toLocaleString()` → `1,234,567.89` |
+| **`valueOf()`**       | Returns the primitive value of a number           | `12.valueOf()` → `12`                |
+| **`MAX_VALUE`**       | Represents the largest possible number in JavaScript | `Number.MAX_VALUE` → `1.7976931348623157e+308` |
+
+---
+
+### **Key Points**
+- **`toFixed()`**: Rounds a number to a fixed number of decimals.
+- **`toPrecision()`**: Rounds a number to a specified total number of digits.
+- **`toExponential()`**: Converts a number to scientific (exponential) notation.
+- **`toLocaleString()`**: Formats a number based on the local language/region.
+- **`valueOf()`**: Gets the primitive number value.
+- **`MAX_VALUE`**: The largest possible number in JavaScript.
+
+# Math Object in JavaScript
+
+The Math object provides methods for performing mathematical operations.
+
+## **1. `sqrt()`**
+- **Definition**: Returns the square root of a number.
+- **Example**:
+    ```javascript
+    let num = 16;
+    console.log(Math.sqrt(num)); // Output: 4 (square root of 16)
+    ```
+
+## **2. `abs()`**
+- **Definition**: Returns the absolute value of a number (removes the negative sign).
+- **Example**:
+    ```javascript
+    let num = -5;
+    console.log(Math.abs(num)); // Output: 5 (absolute value of -5)
+    ```
+
+## **3. `round()`**
+- **Definition**: Rounds a number to the nearest integer.
+- **Example**:
+    ```javascript
+    let num = 3.6;
+    console.log(Math.round(num)); // Output: 4 (rounds to nearest integer)
+    ```
+
+## **4. `ceil()`**
+- **Definition**: Rounds a number **up** to the nearest integer, regardless of the decimal.
+- **Example**:
+    ```javascript
+    let num = 3.2;
+    console.log(Math.ceil(num)); // Output: 4 (rounds up)
+    ```
+
+## **5. `floor()`**
+- **Definition**: Rounds a number **down** to the nearest integer, regardless of the decimal.
+- **Example**:
+    ```javascript
+    let num = 3.8;
+    console.log(Math.floor(num)); // Output: 3 (rounds down)
+    ```
+
+## **6. `pow()`**
+- **Definition**: Returns the result of raising a number to a specified power.
+- **Example**:
+    ```javascript
+    let base = 2;
+    let exponent = 3;
+    console.log(Math.pow(base, exponent)); // Output: 8 (2^3 = 8)
+    ```
+
+## **7. `min()`**
+- **Definition**: Returns the smallest value among the given numbers.
+- **Example**:
+    ```javascript
+    console.log(Math.min(10, 20, 5, 30)); // Output: 5 (smallest value)
+    ```
+
+## **8. `max()`**
+- **Definition**: Returns the largest value among the given numbers.
+- **Example**:
+    ```javascript
+    console.log(Math.max(10, 20, 5, 30)); // Output: 30 (largest value)
+    ```
+
+## **9. `random()`**
+- **Definition**: Returns a random number between 0 (inclusive) and 1 (exclusive).
+- **Example**:
+    ```javascript
+    console.log(Math.random()); // Output: A random number between 0 and 1
+    ```
+
+---
+
+### **Summary of Math Methods**
+
+| Method            | Description                                  | Example                              |
+|-------------------|----------------------------------------------|--------------------------------------|
+| **`sqrt()`**      | Returns the square root of a number          | `Math.sqrt(16)` → `4`               |
+| **`abs()`**       | Returns the absolute value of a number       | `Math.abs(-5)` → `5`                |
+| **`round()`**     | Rounds a number to the nearest integer      | `Math.round(3.6)` → `4`             |
+| **`ceil()`**      | Rounds a number up to the nearest integer   | `Math.ceil(3.2)` → `4`             |
+| **`floor()`**     | Rounds a number down to the nearest integer | `Math.floor(3.8)` → `3`            |
+| **`pow()`**       | Raises a number to a specific power          | `Math.pow(2, 3)` → `8`              |
+| **`min()`**       | Returns the smallest number                  | `Math.min(10, 20, 5, 30)` → `5`     |
+| **`max()`**       | Returns the largest number                   | `Math.max(10, 20, 5, 30)` → `30`    |
+| **`random()`**    | Returns a random number between 0 and 1      | `Math.random()` → Random number     |
+
+---
+
+### **Key Points**
+- **`sqrt()`**: Find the square root.
+- **`abs()`**: Find the absolute (positive) value.
+- **`round()`**: Round to the nearest whole number.
+- **`ceil()`**: Round up to the nearest whole number.
+- **`floor()`**: Round down to the nearest whole number.
+- **`pow()`**: Raise a number to a power.
+- **`min()`**: Find the smallest number in a list.
+- **`max()`**: Find the largest number in a list.
+- **`random()`**: Get a random number between 0 and 1.
+
+

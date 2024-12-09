@@ -1,0 +1,6 @@
+# JavaScript Notes
+#Document Object Model(DOM):
++ Programming Interface for web/HTML element.
++ Structure that we can interact with via JavaScript.
++ Inculdes tags,attributes,text nodes , etc.
++ Represented as a tree Structure.

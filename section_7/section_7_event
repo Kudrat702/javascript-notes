@@ -1,0 +1,556 @@
+# Events in JavaScript
+
+## **Definition**:
+- An **event** is an action or occurrence (like a click, hover, keypress) that a user or browser can interact with, and you can respond to it using JavaScript.
+
+---
+
+## **How to Use Events**
+
+### **1. Using `onclick` Attribute**
+
+- Attach an event directly to an element using the HTML attribute **`onclick`**.
+- **Example**:
+    ```html
+    <button onclick="alert('Button clicked!')">Click Me</button>
+    ```
+
+---
+
+### **2. Using `addEventListener()`**
+
+- Use **`addEventListener()`** to attach an event to an element in JavaScript.
+- **Example**:
+    ```javascript
+    let button = document.getElementById("myButton");
+    button.addEventListener("click", function () {
+        alert("Button clicked using addEventListener!");
+    });
+    ```
+
+---
+
+### **Common Event Types**
+
+| **Event Type**   | **Description**                         | **Example**                                              |
+|------------------|-----------------------------------------|---------------------------------------------------------|
+| **`click`**      | Fires when an element is clicked.       | `element.addEventListener("click", callback)`           |
+| **`mouseover`**  | Fires when the mouse hovers over an element. | `element.addEventListener("mouseover", callback)`       |
+| **`keydown`**    | Fires when a key is pressed.            | `document.addEventListener("keydown", callback)`        |
+| **`submit`**     | Fires when a form is submitted.         | `form.addEventListener("submit", callback)`             |
+
+---
+
+### **Example: Handling a Click Event**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="myButton">Click Me</button>
+
+    <script>
+        // JavaScript to handle the click event
+        let button = document.getElementById("myButton");
+        button.addEventListener("click", function () {
+            alert("Button was clicked!");
+        });
+    </script>
+</body>
+</html>
+```
+
+# Mouse Events in JavaScript
+
+## **Definition**:
+- **Mouse events** are triggered when the user interacts with elements using a mouse (like clicking, moving, or hovering over elements).
+
+---
+
+## **Common Mouse Events**
+
+| **Event Type**   | **Description**                                         | **Example**                                              |
+|------------------|---------------------------------------------------------|----------------------------------------------------------|
+| **`click`**      | Fires when the mouse button is clicked on an element.   | `element.addEventListener("click", callback)`            |
+| **`dblclick`**   | Fires when the mouse button is double-clicked on an element. | `element.addEventListener("dblclick", callback)`         |
+| **`mouseover`**  | Fires when the mouse pointer enters an element.         | `element.addEventListener("mouseover", callback)`        |
+| **`mouseout`**   | Fires when the mouse pointer leaves an element.         | `element.addEventListener("mouseout", callback)`         |
+| **`mousemove`**  | Fires when the mouse pointer moves over an element.     | `element.addEventListener("mousemove", callback)`       |
+
+---
+
+### **Example: Handling Mouse Click Event**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="myButton">Click Me</button>
+
+    <script>
+        // JavaScript to handle mouse click event
+        let button = document.getElementById("myButton");
+        button.addEventListener("click", function() {
+            alert("Button clicked with mouse!");
+        });
+    </script>
+</body>
+</html>
+```
+
+# Event Object Properties in JavaScript
+
+## **Definition**:
+- The **Event Object** contains details about an event, such as the target element, mouse position, event type, and more, which you can use in event handlers.
+
+---
+
+## **1. `target`**
+- **Definition**: Refers to the element that triggered the event.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.target);  // Logs the clicked element
+    });
+    ```
+
+---
+
+## **2. `currentTarget`**
+- **Definition**: Refers to the element where the event listener is attached.
+- **Example**:
+    ```javascript
+    document.getElementById("myDiv").addEventListener("click", function(event) {
+        console.log(event.currentTarget);  // Logs the element with the event listener
+    });
+    ```
+
+---
+
+## **3. `type`**
+- **Definition**: Indicates the type of event (e.g., `click`, `mouseover`).
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.type);  // Logs "click"
+    });
+    ```
+
+---
+
+## **4. `timeStamp`**
+- **Definition**: Gives the time (in milliseconds) when the event occurred.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.timeStamp);  // Logs the event's timestamp
+    });
+    ```
+
+---
+
+## **5. `clientX`**
+- **Definition**: Gives the horizontal position of the mouse within the viewport (in pixels).
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.clientX);  // Logs the mouse's X position
+    });
+    ```
+
+---
+
+## **6. `clientY`**
+- **Definition**: Gives the vertical position of the mouse within the viewport (in pixels).
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.clientY);  // Logs the mouse's Y position
+    });
+    ```
+
+---
+
+## **7. `offsetX`**
+- **Definition**: Gives the horizontal position of the mouse relative to the target element.
+- **Example**:
+    ```javascript
+    document.getElementById("myDiv").addEventListener("click", function(event) {
+        console.log(event.offsetX);  // Logs the mouse's X offset
+    });
+    ```
+
+---
+
+## **8. `offsetY`**
+- **Definition**: Gives the vertical position of the mouse relative to the target element.
+- **Example**:
+    ```javascript
+    document.getElementById("myDiv").addEventListener("click", function(event) {
+        console.log(event.offsetY);  // Logs the mouse's Y offset
+    });
+    ```
+
+---
+
+## **9. `pageX`**
+- **Definition**: Gives the horizontal position of the mouse relative to the entire document.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.pageX);  // Logs the mouse's X position on the page
+    });
+    ```
+
+---
+
+## **10. `pageY`**
+- **Definition**: Gives the vertical position of the mouse relative to the entire document.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.pageY);  // Logs the mouse's Y position on the page
+    });
+    ```
+
+---
+
+## **11. `screenX`**
+- **Definition**: Gives the horizontal position of the mouse relative to the screen.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.screenX);  // Logs the mouse's X position on the screen
+    });
+    ```
+
+---
+
+## **12. `screenY`**
+- **Definition**: Gives the vertical position of the mouse relative to the screen.
+- **Example**:
+    ```javascript
+    document.addEventListener("click", function(event) {
+        console.log(event.screenY);  // Logs the mouse's Y position on the screen
+    });
+    ```
+
+---
+
+## **Summary**
+
+| **Property**      | **Description**                                   | **Example Usage**                                      |
+|-------------------|---------------------------------------------------|-------------------------------------------------------|
+| **`target`**       | Element that triggered the event.                 | `event.target`                                       |
+| **`currentTarget`**| Element where the listener is attached.           | `event.currentTarget`                                |
+| **`type`**         | Type of event (e.g., `click`).                    | `event.type`                                         |
+| **`timeStamp`**    | Time when the event occurred.                     | `event.timeStamp`                                    |
+| **`clientX`**      | Mouse X position in the viewport.                 | `event.clientX`                                      |
+| **`clientY`**      | Mouse Y position in the viewport.                 | `event.clientY`                                      |
+| **`offsetX`**      | Mouse X position relative to the target element.  | `event.offsetX`                                      |
+| **`offsetY`**      | Mouse Y position relative to the target element.  | `event.offsetY`                                      |
+| **`pageX`**        | Mouse X position relative to the document.        | `event.pageX`                                        |
+| **`pageY`**        | Mouse Y position relative to the document.        | `event.pageY`                                        |
+| **`screenX`**      | Mouse X position on the screen.                   | `event.screenX`                                      |
+| **`screenY`**      | Mouse Y position on the screen.                   | `event.screenY`                                      |
+
+---
+
+### **Summary**
+- Use these properties to get information about the event's target, type, and mouse positions.
+
+# Keyboard Events and Key Properties in JavaScript
+
+## **Definition**:
+- **Keyboard events** occur when the user interacts with the keyboard, such as pressing keys. These events are triggered by pressing and releasing keys.
+
+---
+
+## **Common Keyboard Events**
+
+| **Event Type**      | **Description**                                      | **Example**                                            |
+|---------------------|------------------------------------------------------|--------------------------------------------------------|
+| **`keydown`**        | Triggered when a key is pressed down.                | `element.addEventListener("keydown", callback)`        |
+| **`keypress`**       | Triggered when a key is pressed (deprecated in modern browsers). | `element.addEventListener("keypress", callback)`       |
+| **`keyup`**          | Triggered when a key is released.                    | `element.addEventListener("keyup", callback)`          |
+
+---
+
+## **Key Properties**
+
+| **Property**     | **Description**                                          | **Example Usage**                                      |
+|------------------|----------------------------------------------------------|--------------------------------------------------------|
+| **`key`**        | The value of the key pressed (e.g., "a", "Enter", "Backspace"). | `event.key` returns the key value pressed.             |
+| **`code`**       | The physical key on the keyboard (e.g., "KeyA", "Enter"). | `event.code` returns the physical key code.            |
+| **`altKey`**     | `true` if the **Alt** key is pressed, `false` otherwise.  | `event.altKey` returns `true` if Alt key is pressed.    |
+| **`shiftKey`**   | `true` if the **Shift** key is pressed, `false` otherwise. | `event.shiftKey` returns `true` if Shift key is pressed.|
+| **`ctrlKey`**    | `true` if the **Ctrl** key is pressed, `false` otherwise. | `event.ctrlKey` returns `true` if Ctrl key is pressed.  |
+| **`metaKey`**    | `true` if the **Meta** (Windows or Command) key is pressed, `false` otherwise. | `event.metaKey` returns `true` if Meta key is pressed.  |
+
+---
+
+## **Examples**
+
+### **1. Keyboard Event - `keydown` Example**
+```html
+<!DOCTYPE html>
+<html>
+<body>
+    <input type="text" id="myInput" placeholder="Press any key">
+
+    <script>
+        document.getElementById("myInput").addEventListener("keydown", function(event) {
+            console.log("Key pressed:", event.key);  // Logs the key value pressed (e.g., 'a', 'Enter')
+        });
+    </script>
+</body>
+</html>
+```
+
+# Input Event in JavaScript
+
+## **Definition**:
+- The **Input event** is triggered when the value of an input field, textarea, or other form elements changes, typically when a user types or changes its value.
+
+---
+
+## **Common Use**:
+- **Input events** are commonly used to capture and respond to user input in form fields, like textboxes and text areas.
+
+---
+
+## **Example**:
+### **1. Input Event - Listening to Input Change**
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="text" id="myInput" placeholder="Type something">
+<p id="demo"></p>
+
+<script>
+document.getElementById("myInput").addEventListener("input", function(event) {
+    document.getElementById("demo").innerText = "You typed: " + event.target.value;
+});
+</script>
+
+</body>
+</html>
+```
+
+# Form Submission and FormData Object in JavaScript
+
+## **1. Form Submission**
+
+### **Definition**:
+- **Form submission** occurs when a user submits a form, usually by clicking a "Submit" button, which sends the form data to the server.
+
+### **Example**:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault();  // Prevents default form submission behavior
+  alert("Form Submitted!");
+});
+</script>
+
+</body>
+</html>
+```
+
+# FormData Object in JavaScript
+
+## **Definition**:
+- The **FormData object** is used to collect and manage form data. It allows you to easily capture data from form elements and send it asynchronously (using `fetch` or `XMLHttpRequest`).
+
+---
+
+## **Example**:
+
+### **1. Creating and Using FormData Object**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"><br><br>
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault();  // Prevent the form from submitting normally
+  
+  // Create a new FormData object from the form
+  let formData = new FormData(document.getElementById("myForm"));
+  
+  // Access the form data using FormData methods
+  console.log(formData.get("name"));  // Logs the value of 'name' input
+  console.log(formData.get("age"));   // Logs the value of 'age' input
+});
+</script>
+
+</body>
+</html>
+```
+## 2. Sending Form Data Using Fetch
+```
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  // Create FormData object
+  let formData = new FormData(document.getElementById("myForm"));
+
+  // Send form data using Fetch API
+  fetch('/submit-form', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+});
+</script>
+
+</body>
+</html>
+
+```
+
+# Event Bubbling in JavaScript
+
+## **Definition**:
+- **Event Bubbling** is a process where an event triggered on a specific element in the DOM propagates or "bubbles up" to its parent elements, all the way to the root of the document.
+
+---
+
+## **Types of Event Bubbling**:
+
+### **1. Event Propagation (Bubbling)**
+- The event starts from the target element and bubbles up to the root of the document, triggering any event listeners on the ancestors of the element.
+
+### **2. Event Capturing (Trickling)**
+- The event starts from the root element and goes down to the target element, triggering event listeners on the ancestors before reaching the target element.
+- **Note**: Event capturing is less common than event bubbling and needs to be specifically enabled.
+
+---
+
+## **Example 1: Event Bubbling**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="parent" style="padding: 50px; background-color: lightblue;">
+  <button id="child">Click Me</button>
+</div>
+
+<script>
+document.getElementById("parent").addEventListener("click", function() {
+  alert("Parent Div Clicked!");
+});
+
+document.getElementById("child").addEventListener("click", function(event) {
+  alert("Button Clicked!");
+});
+</script>
+
+</body>
+</html>
+```
+# Event Delegation in JavaScript
+
+## **Definition**:
+- **Event Delegation** is a technique where a single event listener is added to a parent element instead of adding it to multiple child elements. The parent handles the events for its child elements, which is efficient for managing events on dynamic or multiple elements.
+
+---
+
+## **Example 1: Event Delegation with Multiple Elements**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<script>
+document.getElementById("list").addEventListener("click", function(event) {
+  if (event.target.tagName === "LI") {
+    alert("List Item Clicked: " + event.target.textContent);
+  }
+});
+</script>
+
+</body>
+</html>
+```
+
+# Page Loading and Window Events in JavaScript
+
+## **Definition**:
+- **Page Loading Events** are events triggered when a webpage is loaded or is about to load.
+- **Window Events** are events that occur on the browser window, such as resizing, focusing, or closing.
+
+---
+
+## **Example 1: Page Load Event (`load`)**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Page Loading Example</h1>
+
+<script>
+window.addEventListener("load", function() {
+  alert("Page Loaded!");
+});
+</script>
+
+</body>
+</html>
+```
+## **Definition**:
+- The **Window Resize Event** triggers whenever the browser window is resized, allowing you to respond to changes in the size of the window.
+
+---
+# Before Page Unload Event in JavaScript
+
+## **Definition**:
+- The **beforeunload** event is triggered before the user leaves or refreshes the page, allowing you to warn them about unsaved changes or confirm their intention to leave.
+
+---

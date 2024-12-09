@@ -1,0 +1,121 @@
+# Loops and Array Methods in JavaScript
+
+## **1. for...of Loop**
+
+### **Definition**:
+- The **`for...of` loop** is used to iterate over iterable objects (like arrays, strings, etc.) and executes a block of code for each item.
+- **Example**:
+    ```javascript
+    let fruits = ["apple", "banana", "cherry"];
+
+    for (let fruit of fruits) {  // Looping through each item in the array
+        console.log(fruit);  // Output: apple, banana, cherry
+    }
+    ```
+
+### **Key Points**:
+- The **`for...of` loop** is great for arrays or any iterable object.
+- It gives access to **values** directly, not indexes.
+
+---
+
+## **2. for...in Loop**
+
+### **Definition**:
+- The **`for...in` loop** is used to iterate over the **keys** (or properties) of an object, or indices of an array.
+- **Example**:
+    ```javascript
+    let person = { name: "Alice", age: 25 };
+
+    for (let key in person) {  // Looping through the keys of the object
+        console.log(key + ": " + person[key]);  // Output: name: Alice, age: 25
+    }
+    ```
+
+### **Key Points**:
+- The **`for...in` loop** is used for iterating through **object properties** or array indices.
+- It gives access to **keys** or indices, not the values directly.
+
+---
+
+## **3. Array.forEach Method**
+
+### **Definition**:
+- The **`forEach`** method is used to **loop through** an array and execute a function for each item.
+- **Example**:
+    ```javascript
+    let numbers = [1, 2, 3, 4];
+
+    numbers.forEach(num => {  // Iterates through the array
+        console.log(num);  // Output: 1 2 3 4
+    });
+    ```
+
+### **Key Points**:
+- **`forEach`** does not return a new array, it simply executes a function for each element.
+
+---
+
+## **4. Array.filter Method**
+
+### **Definition**:
+- The **`filter`** method creates a **new array** with all elements that pass a test (provided by a function).
+- **Example**:
+    ```javascript
+    let numbers = [1, 2, 3, 4, 5];
+
+    let evenNumbers = numbers.filter(num => num % 2 === 0);  // Filters out even numbers
+    console.log(evenNumbers);  // Output: [2, 4]
+    ```
+
+### **Key Points**:
+- **`filter`** returns a **new array** with elements that meet the condition.
+- The **original array** is not modified.
+
+---
+
+## **5. Array.map Method**
+
+### **Definition**:
+- The **`map`** method creates a **new array** by applying a function to each element in the original array.
+- **Example**:
+    ```javascript
+    let numbers = [1, 2, 3];
+
+    let squaredNumbers = numbers.map(num => num * num);  // Squares each number
+    console.log(squaredNumbers);  // Output: [1, 4, 9]
+    ```
+
+### **Key Points**:
+- **`map`** creates a **new array** with the results of applying the function to each element.
+- The **original array** is not changed.
+
+---
+
+## **6. Array.reduce Method**
+
+### **Definition**:
+- The **`reduce`** method applies a function to each element in the array to reduce it to a **single value** (like sum or product).
+- **Example**:
+    ```javascript
+    let numbers = [1, 2, 3, 4];
+
+    let total = numbers.reduce((acc, num) => acc + num, 0);  // Sums all numbers
+    console.log(total);  // Output: 10
+    ```
+
+### **Key Points**:
+- **`reduce`** takes a **callback function** with an accumulator (which stores the result) and the current value.
+- It reduces the array to a **single value** (e.g., sum, product, etc.).
+
+---
+
+### **Summary**
+
+| Feature                    | **for...of Loop**                         | **for...in Loop**                            | **Array.forEach**                             | **Array.filter**                             | **Array.map**                                | **Array.reduce**                             |
+|----------------------------|-------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|---------------------------------------------|
+| **Usage**                   | Loop through **values** of arrays or iterable objects | Loop through **keys** of objects or array indices | Perform a function for each item in an array  | Filter elements based on a condition         | Create a new array by transforming each item  | Reduce an array to a **single value**        |
+| **Return Value**            | No return value                           | No return value                              | No return value                               | Returns a **new filtered array**              | Returns a **new array** with transformed values | Returns a **single value** (e.g., sum, max)   |
+| **Example**                 | `for (let item of array) {}`              | `for (let index in array) {}`                | `array.forEach(item => { ... })`              | `array.filter(item => condition)`            | `array.map(item => transformation)`          | `array.reduce((acc, item) => acc + item, 0)` |
+
+---
