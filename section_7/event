@@ -553,4 +553,4 @@ window.addEventListener("load", function() {
 ## **Definition**:
 - The **beforeunload** event is triggered before the user leaves or refreshes the page, allowing you to warn them about unsaved changes or confirm their intention to leave.
 
----
+--- 
